@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { User } from './_models/user';
+import { AccountService } from './_services/account.service';
 
 @Component({
   selector: 'app-root',
@@ -10,17 +12,16 @@ export class AppComponent implements OnInit{
   title = 'The Dating App'; //Interpolation is a technique that allows the user to bind a value to a UI element.
   users: any;
   // dependency injection
-  constructor(private http: HttpClient){  // by default its asyncronous
+  constructor(private accountService: AccountService){  // by default its asyncronous
 
   }
   ngOnInit(){
-    this.getUsers();
+    
+    this.setCurrentUser();
   }
-  getUsers(){
-    this.http.get('https://localhost:5001/api/users').subscribe(response => {
-      this.users = response;
-    }, error => {
-      console.log(error);
-    })
+  setCurrentUser(){
+    const user: User = JSON.parse(localStorage.getItem('user'));
+    this.accountService.setCurrentUser(user);
   }
+
 }

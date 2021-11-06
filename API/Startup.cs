@@ -24,7 +24,7 @@ namespace API
 {
     public class Startup
     {
-        private readonly IConfiguration _config;
+        private readonly IConfiguration _config; //gettong config information
         public Startup(IConfiguration config)
         {
             _config = config;
