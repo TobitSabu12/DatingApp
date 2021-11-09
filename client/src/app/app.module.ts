@@ -9,6 +9,12 @@ import { FormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { MemberListComponent } from './members/member-list/member-list.component';
+import { MemberDetailsComponent } from './members/member-details/member-details.component';
+import { ListsComponent } from './lists/lists.component';
+import { MessagesComponent } from './messages/messages.component';
+import { ToastrModule } from 'ngx-toastr';
+import { SharedModule } from './_modules/shared.module';
 
 //everey angular application must have one module.
 @NgModule({  // tells its a module
@@ -16,7 +22,11 @@ import { RegisterComponent } from './register/register.component';
     AppComponent,
     NavComponent,
     HomeComponent,
-    RegisterComponent  //declares components available in our application
+    RegisterComponent,
+    MemberListComponent,
+    MemberDetailsComponent,
+    ListsComponent,
+    MessagesComponent  //declares components available in our application
   ],
   imports: [
     BrowserModule, //setup browser for displaying 
@@ -24,7 +34,7 @@ import { RegisterComponent } from './register/register.component';
     HttpClientModule, // setting up http request
     BrowserAnimationsModule, // adding bootstrap
     FormsModule,// specifying forms
-    BsDropdownModule.forRoot()
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent] // bootstarps any components when the application loads
