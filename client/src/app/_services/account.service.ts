@@ -13,6 +13,7 @@ export class AccountService {
    private currentUserSource = new ReplaySubject<User>(1) //buffer the values 
    currentUser$ =  this.currentUserSource.asObservable();
   constructor(private http:HttpClient) { }
+  //Login
   login(model:any){
     return this.http.post(this.baseurl + 'account/login',model).pipe(
       map((response)=>{
@@ -23,6 +24,7 @@ export class AccountService {
         }
       })
     )}
+    //Register
 register(model: any){
   return this.http.post(this.baseurl +'account/register',model).pipe(
     map((response) => {
