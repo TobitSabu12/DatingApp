@@ -21,6 +21,9 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { MemberCardComponent } from './members/member-card/member-card.component';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 
 //everey angular application must have one module.
 @NgModule({  // tells its a module
@@ -36,7 +39,8 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
     TestErrorsComponent,
     NotFoundComponent,
     ServerErrorComponent,
-    MemberCardComponent  //declares components available in our application
+    MemberCardComponent,
+    MemberEditComponent  //declares components available in our application
   ],
   imports: [
     BrowserModule, //setup browser for displaying 
@@ -44,11 +48,14 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
     HttpClientModule, // setting up http request
     BrowserAnimationsModule, // adding bootstrap
     FormsModule,// specifying forms
-    SharedModule
+    SharedModule,
+    NgxSpinnerModule
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi:true},
-    {provide:HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi:true}
+    {provide:HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi:true},
+    {provide:HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi:true}
+
   ],
   bootstrap: [AppComponent] // bootstarps any components when the application loads
 })
