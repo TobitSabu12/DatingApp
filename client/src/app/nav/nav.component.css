@@ -2,3 +2,14 @@
     cursor: pointer;
     text-decoration: none;
 }
+img{
+    max-height: 50px;
+    border: 2px solid #fff;
+    display: inline;
+}
+.circle {
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -o-border-radius: 50%;
+}
